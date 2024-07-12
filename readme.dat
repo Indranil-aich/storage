@@ -1,0 +1,23 @@
+Sl No	
+1	Factory Design Pattren(SOLID)
+2	ProducerConsumer(Sem&Mutex)
+3	Thread(Vector&Func)
+4	OperatorNew&DeleteOverLoad
+5	PlacementNew Operator
+6	Const Volatile
+7	Functor&FunctionPTR&Callback&Lambda
+8	IS_DIR VALID & struct stat
+9	String Manipulation
+10	String Class
+11	Unique_PTR & Shared_PTR
+12	SingletonDP(Static Variable & DCL)
+13	VisitorDP
+14	AsftractFactoryDP
+15	ObserverDP
+16	LinkList
+17	BST
+18	BitWise
+19	FinalClass
+20	SharedMemory
+21	AssociationVsAggregationVsComposition
+22	threadReaderWriter
