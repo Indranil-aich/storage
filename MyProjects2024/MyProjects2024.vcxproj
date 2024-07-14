@@ -127,10 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CmakeFinalClass.cpp" />
+    <ClCompile Include="CoperatorNewAndDeleteOverload.cpp" />
     <ClCompile Include="MyProjects2024.cpp" />
+    <ClCompile Include="CchangeConstVariable.cpp" />
+    <ClCompile Include="CdeleteSpatialMemberFunction.cpp" />
+    <ClCompile Include="CdiamonProblem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CchangeConstVar.h" />
+    <ClInclude Include="CommonHeader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
