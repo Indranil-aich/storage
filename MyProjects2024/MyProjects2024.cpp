@@ -2,16 +2,20 @@
 //
 
 #include <iostream>
-#include "CchangeConstVar.h"
+#include "CommonHeader.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    
-    
-    CchangeConstVar cObj;
-    cObj.chageConstVariable_();
-    
-    return 0;
+	std::cout << "Hello World!\n";
+
+	chageConstVariable_();
+	deleteSpatialMemberFunction_();
+	diamondProblem_();
+
+	operatorNewAndDeleteOverload_();
+
+	makeFinalClass_();
+
+	return 0;
 }
 
