@@ -7,15 +7,15 @@
 int main()
 {
 	std::cout << "Hello World!\n";
-
-	chageConstVariable_();
-	deleteSpatialMemberFunction_();
-	diamondProblem_();
-
-	operatorNewAndDeleteOverload_();
-
-	makeFinalClass_();
-
+	/*
+	    chageConstVariable_();
+		deleteSpatialMemberFunction_();
+		diamondProblem_();
+		operatorNewAndDeleteOverload_();
+		makeFinalClass_();
+		operatorOverload_();
+		*/
+	createVehicleFactory_();
 	return 0;
 }
 
