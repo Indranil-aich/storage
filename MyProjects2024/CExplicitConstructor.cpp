@@ -27,8 +27,8 @@ void display(Cbase obj)
 }
 void funcToCreateExplicitConstructor_()
 {
-	display(10);
-	std::cout << __FUNCTION__ << "execute at line no" << __LINE__ << std::endl;
 	
+	std::cout << __FUNCTION__ << "execute at line no" << __LINE__ << std::endl;
+	display(10);
 	std::cout << "end " << __FUNCTION__ << std::endl;
 }

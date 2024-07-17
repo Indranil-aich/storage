@@ -11,4 +11,4 @@ extern void funToCreateUniquePTR_();
 extern void funToCreateSharedPTR_();
 extern void funcToCreateFuncPTR_N_Functor_();
 extern void funcToCreateExplicitConstructor_();
-extern void funcToSingletonObj_();
+extern void funcToCreateDCSingletonObj_();

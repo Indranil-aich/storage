@@ -14,16 +14,14 @@ int main()
 	funcToOverloadOperatorNewAndDelete();
 	funcToMakeFinalClass_();
 	funcToOverloadOperator_();
-
 	funcToCreateVehicleFactory_();
 	funToCreateUniquePTR_();
 	funToCreateSharedPTR_();
-	
 	funcToCreateFuncPTR_N_Functor_();
-	
 	funcToCreateExplicitConstructor_();
+	funcToCreateSingletonObj_();
 */
-	funcToSingletonObj_();
+	funcToCreateDCSingletonObj_();
 	return 0;
 }
 

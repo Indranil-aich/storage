@@ -135,6 +135,7 @@
     <ClCompile Include="CoperatorOverload.cpp" />
     <ClCompile Include="CSharedPTR.cpp" />
     <ClCompile Include="CSingleton.cpp" />
+    <ClCompile Include="CSingletonDC.cpp" />
     <ClCompile Include="CUniquePTR.cpp" />
     <ClCompile Include="MyProjects2024.cpp" />
     <ClCompile Include="CchangeConstVariable.cpp" />
