@@ -31,7 +31,7 @@ public:
 
 };
 
-void operatorNewAndDeleteOverload_()
+void funcToOverloadOperatorNewAndDelete()
 {
 	std::cout << __FUNCTION__ << "execute at line no" << __LINE__ << std::endl;
 	

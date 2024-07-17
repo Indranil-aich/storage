@@ -3,7 +3,7 @@
 #include "CommonHeader.h"
 
 
-void chageConstVariable_()
+void funcToChageConstVariable_()
 {
 	std::cout << __FUNCTION__ << "execute at line no" << __LINE__ << std::endl;
 	const volatile int  x = 10;

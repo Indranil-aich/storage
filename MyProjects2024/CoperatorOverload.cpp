@@ -22,7 +22,7 @@ public:
 	}
 
 };
-void operatorOverload_()
+void funcToOverloadOperator_()
 {
 	std::cout << __FUNCTION__ << " execute at line no" << __LINE__ << std::endl;
 	Ccomplex C1(5, 10), C2(10, 20);

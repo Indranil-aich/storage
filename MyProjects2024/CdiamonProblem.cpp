@@ -100,7 +100,7 @@ public:
 	}
 };
 
-void diamondProblem_()
+void funcToDiamondProblem_()
 {
 	std::cout << __FUNCTION__ << "execute at line no" << __LINE__ << std::endl;
 	D* dObj = new D();

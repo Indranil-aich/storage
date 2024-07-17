@@ -12,7 +12,7 @@ public:
 	}
 };
 
-void deleteSpatialMemberFunction_()
+void funcToDeleteSpatialMemberFunc_()
 {
 	std::cout << std::endl << __FUNCTION__ <<"execute at line no" <<__LINE__ << std::endl;
 	CmyBase bObj;

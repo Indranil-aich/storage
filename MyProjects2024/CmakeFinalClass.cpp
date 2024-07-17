@@ -18,7 +18,7 @@ class CmyClass :public CmyFinal
 public:
 	CmyClass() = default;
 };
-void makeFinalClass_()
+void funcToMakeFinalClass_()
 {
 	std::cout << __FUNCTION__ << " execute at line no" << __LINE__ << std::endl;
 	//CmyClass* obj = new CmyClass();

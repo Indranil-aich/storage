@@ -60,7 +60,7 @@ public:
 
 };
 
-void createVehicleFactory_()
+void funcToCreateVehicleFactory_()
 {
 	std::cout << __FUNCTION__ << " execute at line no" << __LINE__ << std::endl;
 	std::unique_ptr<CVehicleFactory> cfObj(new CVehicleFactory());

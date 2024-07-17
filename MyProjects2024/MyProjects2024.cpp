@@ -7,15 +7,23 @@
 int main()
 {
 	std::cout << "Hello World!\n";
-	/*
-	    chageConstVariable_();
-		deleteSpatialMemberFunction_();
-		diamondProblem_();
-		operatorNewAndDeleteOverload_();
-		makeFinalClass_();
-		operatorOverload_();
-		*/
-	createVehicleFactory_();
+/*
+	funcToChageConstVariable_();
+	funcToDeleteSpatialMemberFunc_();
+	funcToDiamondProblem_();
+	funcToOverloadOperatorNewAndDelete();
+	funcToMakeFinalClass_();
+	funcToOverloadOperator_();
+
+	funcToCreateVehicleFactory_();
+	funToCreateUniquePTR_();
+	funToCreateSharedPTR_();
+	
+	funcToCreateFuncPTR_N_Functor_();
+	
+	funcToCreateExplicitConstructor_();
+*/
+	funcToSingletonObj_();
 	return 0;
 }
 
