@@ -22,9 +22,14 @@ int main()
 	funcToCreateSingletonObj_();
 
 	funcToCreateDCSingletonObj_();
+	funcToCreate2D_N_3D_dynamicArry_();
+	funcToManupulateBit_();
+	funcToCreateLinkList_();
+
 */
 
-	funcToCreate2D_N_3D_dynamicArry_();
+	funcToCreateLinkList_();
+	
 	return 0;
 }
 
