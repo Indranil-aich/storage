@@ -12,3 +12,4 @@ extern void funToCreateSharedPTR_();
 extern void funcToCreateFuncPTR_N_Functor_();
 extern void funcToCreateExplicitConstructor_();
 extern void funcToCreateDCSingletonObj_();
+extern void funcToCreate2D_N_3D_dynamicArry_();

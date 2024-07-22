@@ -20,8 +20,11 @@ int main()
 	funcToCreateFuncPTR_N_Functor_();
 	funcToCreateExplicitConstructor_();
 	funcToCreateSingletonObj_();
-*/
+
 	funcToCreateDCSingletonObj_();
+*/
+
+	funcToCreate2D_N_3D_dynamicArry_();
 	return 0;
 }
 

@@ -57,6 +57,9 @@
     <ClCompile Include="CSingletonDC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C2D_N_3D_Array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonHeader.h">

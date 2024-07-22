@@ -1,5 +1,36 @@
 #include "CommonHeader.h"
 
+/**************************************************************************************
+* The Liskov Substitution Principle (LSP) states that objects of a superclass should be 
+replaceable with objects of a subclass without affecting the program's behavior.
+
+In your factory design pattern code:
+
+Base Class CVehicle:
+===========================
+Abstract class with a pure virtual function createVehicle_().
+
+Derived Classes CCar and CBike:
+==================================
+Both override the createVehicle_() method.
+Implement their specific behavior for createVehicle_().
+
+Factory Class CVehicleFactory:
+====================================
+Creates and returns either a CCar or CBike object as a CVehicle pointer based on input.
+
+LSP Application:
+
+Method Consistency: CCar and CBike provide implementations for createVehicle_(), 
+                   allowing them to be used wherever CVehicle is expected.
+Behavioral Compatibility: Using CCar or CBike in place of CVehicle does not 
+                         alter the program's behavior.
+Conclusion:
+Your code adheres to LSP because CCar and CBike can replace CVehicle without affecting 
+the program's functionality. The factory pattern ensures the correct vehicle type is 
+created, and polymorphism ensures the right createVehicle_() method is called.
+**************************************************************************************/
+
 class CVehicle
 {
 public:
