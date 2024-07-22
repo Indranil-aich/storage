@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CBitManipulation.cpp" />
     <ClCompile Include="CCreateFuncPTRNFunctor_.cpp" />
     <ClCompile Include="CExplicitConstructor.cpp" />
     <ClCompile Include="CfactoryDesignPattern.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="CchangeConstVariable.cpp" />
     <ClCompile Include="CdeleteSpatialMemberFunction.cpp" />
     <ClCompile Include="CdiamonProblem.cpp" />
+    <ClCompile Include="CLinkList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssociationVsAggregationVsComposition.h" />
