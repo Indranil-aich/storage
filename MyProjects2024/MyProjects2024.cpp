@@ -25,10 +25,15 @@ int main()
 	funcToCreate2D_N_3D_dynamicArry_();
 	funcToManupulateBit_();
 	funcToCreateLinkList_();
+	funcToCreateLinkList_();
+	funcToManipulateString_();
+	funcToCreateABSFactory_();
+	funcToCreateVisitor_();
 
 */
 
-	funcToCreateLinkList_();
+ 
+ funcToCreateBST_();
 	
 	return 0;
 }

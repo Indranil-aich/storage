@@ -15,3 +15,7 @@ extern void funcToCreateDCSingletonObj_();
 extern void funcToCreate2D_N_3D_dynamicArry_();
 extern void funcToManupulateBit_();
 extern void funcToCreateLinkList_();
+extern void funcToManipulateString_();
+extern void funcToCreateABSFactory_();
+extern void funcToCreateVisitor_();
+extern void funcToCreateBST_();

@@ -137,18 +137,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CABSFactoryDP.cpp" />
     <ClCompile Include="CBitManipulation.cpp" />
     <ClCompile Include="CCreateFuncPTRNFunctor_.cpp" />
     <ClCompile Include="CExplicitConstructor.cpp" />
     <ClCompile Include="CfactoryDesignPattern.cpp" />
     <ClCompile Include="CmakeFinalClass.cpp" />
+    <ClCompile Include="CMyBST.cpp" />
     <ClCompile Include="CoperatorNewAndDeleteOverload.cpp" />
     <ClCompile Include="CoperatorOverload.cpp" />
     <ClCompile Include="CSharedPTR.cpp" />
     <ClCompile Include="CSingleton.cpp" />
     <ClCompile Include="CSingletonDC.cpp" />
     <ClCompile Include="C2D_N_3D_Array.cpp" />
+    <ClCompile Include="CStringManipulation.cpp" />
     <ClCompile Include="CUniquePTR.cpp" />
+    <ClCompile Include="CVisitorDP.cpp" />
     <ClCompile Include="MyProjects2024.cpp" />
     <ClCompile Include="CchangeConstVariable.cpp" />
     <ClCompile Include="CdeleteSpatialMemberFunction.cpp" />
