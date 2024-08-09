@@ -31,6 +31,8 @@ public:
     void preOrderR_(CmyBST* rootBST);
     void postOrderR_(CmyBST* rootBST);
     CmyBST* covertToMirror(CmyBST* rootBST);
+    void leftView(CmyBST* rootBST);
+    CmyBST* BST2DLL_(CmyBST* rootBST);
     void findMin_(CmyBST* rootBST)
     {
         int min1, min2;
@@ -115,10 +117,36 @@ void CmyBST::inOrderR_(CmyBST* rootBST)
     }
 }
 
-void CmyBST::inOrderI_(CmyBST* rootBST, CmyBST** head)
+CmyBST* CmyBST::BST2DLL_(CmyBST* rootBST)
 {
-   
+    CmyBST* head = nullptr;
+    CmyBST* cur = rootBST;
+    CmyBST* pre = nullptr;
+    std::vector<CmyBST*> queue;
+    while (cur != nullptr || !queue.empty())
+    {
+        while (cur != nullptr)
+        {
+            queue.push_back(cur);
+            cur = cur->left_node;
+        }
+        cur = queue.back();
+        queue.pop_back();
+        if (pre == nullptr)
+        {
+            head = cur;
+        }
+        else {
+            cur->left_node = pre;
+            pre->right_node = cur;
+        }
+        pre = cur;
+        //std::cout<<" "<<cur->_mdata;
+        cur = cur->right_node;
+    }
+    return head;
 }
+
 
 
 void CmyBST::preOrderR_(CmyBST* rootBST)
@@ -142,6 +170,37 @@ void CmyBST::postOrderR_(CmyBST* rootBST)
         postOrderR_(rootBST->right_node);
         std::cout << " " << rootBST->_mdata;
 
+    }
+}
+#include <list>
+void CmyBST::leftView(CmyBST* rootBST)
+{
+    std::list<CmyBST*> queue;
+    if (rootBST != nullptr)
+    {
+        queue.push_back(rootBST);
+    }
+
+    while (!queue.empty())
+    {
+        int size = queue.size();
+        for (int i = 1; i <= size; i++)
+        {
+            CmyBST* tmp = queue.front();
+            queue.pop_front();
+            if (i == 1)
+            {
+                std::cout << " " << tmp->_mdata;
+            }
+            if (tmp->left_node != nullptr)
+            {
+                queue.push_back(tmp->left_node);
+            }
+            if (tmp->right_node != nullptr)
+            {
+                queue.push_back(tmp->right_node);
+            }
+        }
     }
 }
 

@@ -29,6 +29,9 @@ Conclusion:
 Your code adheres to LSP because CCar and CBike can replace CVehicle without affecting 
 the program's functionality. The factory pattern ensures the correct vehicle type is 
 created, and polymorphism ensures the right createVehicle_() method is called.
+
+"Objects of a superclass should be replaceable with objects of a subclass 
+without affecting the correctness of the program."
 **************************************************************************************/
 
 class CVehicle

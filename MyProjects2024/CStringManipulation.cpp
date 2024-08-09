@@ -122,3 +122,49 @@ void funcToManipulateString_()
 	validateBrackets_("{ [()()] }");*/
 	findDomainName_("aich@gmail.com  aich@calsoft.com aich@niva.com iaich@gmail.com");
 }
+
+/*#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <string>
+#include <sstream>
+
+void validateBrackets(const std::string &sSTR)
+{
+    std::vector<char> tokens;
+    for(auto &tmp : sSTR)
+    {
+        if((tmp == '(') || (tmp == '{') || (tmp == '['))
+        {
+            tokens.push_back(tmp);
+        }
+        else if((tmp == ')' && !tokens.empty() && tokens.back() == '(') || 
+                (tmp == '}' && !tokens.empty() && tokens.back() == '{') || 
+                (tmp == ']' && !tokens.empty() && tokens.back() == '['))
+        {
+            tokens.pop_back();
+        }
+        else if((tmp == ')') || (tmp == '}') || (tmp == ']'))
+        {
+            // If there's a closing bracket without a matching opening bracket
+            std::cout << "invalid brackets" << std::endl;
+            return;
+        }
+    } 
+
+    if(tokens.empty()) 
+    {
+       std::cout << "valid brackets" << std::endl;
+    }
+    else
+    {
+       std::cout << "invalid brackets" << std::endl;
+    } 
+}
+
+int main()
+{
+    validateBrackets("{[()()]}");
+    return 0;
+}
+*/
