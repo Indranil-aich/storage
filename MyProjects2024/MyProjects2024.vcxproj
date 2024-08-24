@@ -146,6 +146,7 @@
     <ClCompile Include="CMyBST.cpp" />
     <ClCompile Include="CoperatorNewAndDeleteOverload.cpp" />
     <ClCompile Include="CoperatorOverload.cpp" />
+    <ClCompile Include="CproducerConsumer.cpp" />
     <ClCompile Include="CSharedPTR.cpp" />
     <ClCompile Include="CSingleton.cpp" />
     <ClCompile Include="CSingletonDC.cpp" />

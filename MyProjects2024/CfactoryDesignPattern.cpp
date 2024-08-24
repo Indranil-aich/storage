@@ -1,104 +1,111 @@
 #include "CommonHeader.h"
 
-/**************************************************************************************
-* The Liskov Substitution Principle (LSP) states that objects of a superclass should be 
-replaceable with objects of a subclass without affecting the program's behavior.
+#include <iostream>
+#include <memory>
 
-In your factory design pattern code:
+/*
+*Liskov Substitution Principle (LSP)
+Principle:
 
-Base Class CVehicle:
-===========================
-Abstract class with a pure virtual function createVehicle_().
+Subtypes must be substitutable for their base types without altering the correctness of the program.
+Analysis:
 
-Derived Classes CCar and CBike:
-==================================
-Both override the createVehicle_() method.
-Implement their specific behavior for createVehicle_().
+CCar and CBike both inherit from IVehicle and provide implementations for the pure virtual function getVehicle_().
+Since both CCar and CBike override the getVehicle_() method of IVehicle, they can be used interchangeably where IVehicle is expected.
+Both CCar and CBike are derived classes that can be used in place of IVehicle, satisfying the Liskov Substitution Principle. The factory class (Cfactory) creates and returns instances of these derived classes correctly, and the main function uses the created IVehicle without any issues.
+Conclusion: The code adheres to the Liskov Substitution Principle.
 
-Factory Class CVehicleFactory:
-====================================
-Creates and returns either a CCar or CBike object as a CVehicle pointer based on input.
+Dependency Inversion Principle (DIP)
+Principle:
 
-LSP Application:
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+Abstractions should not depend on details. Details should depend on abstractions.
+Analysis:
 
-Method Consistency: CCar and CBike provide implementations for createVehicle_(), 
-                   allowing them to be used wherever CVehicle is expected.
-Behavioral Compatibility: Using CCar or CBike in place of CVehicle does not 
-                         alter the program's behavior.
-Conclusion:
-Your code adheres to LSP because CCar and CBike can replace CVehicle without affecting 
-the program's functionality. The factory pattern ensures the correct vehicle type is 
-created, and polymorphism ensures the right createVehicle_() method is called.
+The Cfactory class depends on the IVehicle abstraction rather than on concrete implementations like CCar or CBike. This allows for flexibility in creating different types of IVehicle implementations.
+The high-level module (the factory class) does not directly depend on the low-level modules (CCar and CBike), but rather on the abstraction (IVehicle).
+Conclusion: The code adheres to the Dependency Inversion Principle because the factory class depends on the IVehicle interface rather than directly on CCar or CBike.
+*/
 
-"Objects of a superclass should be replaceable with objects of a subclass 
-without affecting the correctness of the program."
-**************************************************************************************/
-
-class CVehicle
+class Ivehicle
 {
 public:
-	CVehicle() = default;
-	virtual void createVehicle_() = 0;
-	virtual ~CVehicle() {}
-
+    Ivehicle()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    virtual ~Ivehicle()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    virtual void getVehicle_() = 0;
 };
 
-class CCar :public CVehicle
+class Ccar :public Ivehicle
 {
 public:
-	CCar() = default;
-	void createVehicle_()
-	{
-		std::cout << "Ccar" << std::endl;
-	}
-	~CCar() {
-		std::cout << "delete CCar" << std::endl;
-	}
+    Ccar()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    virtual ~Ccar()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    void getVehicle_()
+    {
+        std::cout << __FUNCTION__ << " executes getCar\n";
+    }
 };
 
-class CBike :public CVehicle
+class Cbike :public Ivehicle
 {
 public:
-	CBike() = default;
-	void createVehicle_()
-	{
-		std::cout << "CBike" << std::endl;
-	}
-	~CBike() {
-		std::cout << "delete CBike" << std::endl;
-	}
+    Cbike()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    virtual ~Cbike()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    void getVehicle_()
+    {
+        std::cout << __FUNCTION__ << " executes getBike\n";
+    }
 };
 
-class CVehicleFactory
+
+class CvehicleFactory
 {
 public:
-	CVehicleFactory()
-		:fObj(nullptr) {}
-	CVehicle* fObj;
-	CVehicle *getVehicle_(int i)
-	{
-		if (i == 1)
-		{
-			fObj = new CCar();
-		}
-		else {
-			fObj = new CBike();
-		}
-		return fObj;
-	}
-	~CVehicleFactory() {
-		std::cout << __FUNCTION__ << " execute at line no" << __LINE__ << std::endl;
-		delete fObj;
-		fObj = nullptr;
-	}
-
+    std::unique_ptr<Ivehicle> createVehicle_(int i = 0)
+    {
+        if (i == 1)
+        {
+            return std::make_unique<Ccar>();
+        }
+        else
+        {
+            return std::make_unique<Cbike>();
+        }
+    }
+    CvehicleFactory()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
+    virtual ~CvehicleFactory()
+    {
+        std::cout << __FUNCTION__ << " executes\n";
+    }
 };
 
 void funcToCreateVehicleFactory_()
 {
-	std::cout << __FUNCTION__ << " execute at line no" << __LINE__ << std::endl;
-	std::unique_ptr<CVehicleFactory> cfObj(new CVehicleFactory());
-	cfObj->getVehicle_(1)->createVehicle_();
-	std::cout << "end " << __FUNCTION__ << std::endl;
-
+    std::unique_ptr<CvehicleFactory>vObj(new CvehicleFactory());
+    vObj->createVehicle_()->getVehicle_();
+    
 }
+
+
+

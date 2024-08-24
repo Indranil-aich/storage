@@ -106,6 +106,15 @@ public:
 			delete tmp;
 			tmp = nullptr;
 		}
+		/*
+		*CmyLink* current = _mNN;
+        while (current != nullptr)
+        {
+            CmyLink* next = current->_mNN;
+            delete current;
+            current = next;
+        }
+		*/
 	}
 	CmyLink* reverseMyLink_(CmyLink* nodeObj)
 	{

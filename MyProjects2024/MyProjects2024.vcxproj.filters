@@ -78,6 +78,9 @@
     <ClCompile Include="CMyBST.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CproducerConsumer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonHeader.h">

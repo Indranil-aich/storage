@@ -1,5 +1,6 @@
 #include "commonHeader.h"
 
+
 template <typename T>
 class CSharedPTR
 {
@@ -83,3 +84,59 @@ void funToCreateSharedPTR_()
 	std::cout << "\t Ref of shared Obj  "<<obj1.getRefCount_()<<" value of obj1 is " << *obj1 << std::endl;
 	std::cout << "end " << __FUNCTION__ << std::endl;
 }
+
+/*
+#include <iostream>
+#include <memory>
+
+class Dog {
+public:
+	Dog(const std::string& name) : name_(name) {}
+	void Bark() const { std::cout << name_ << " says woof!" << std::endl; }
+private:
+	std::string name_;
+};
+
+class Trainer {
+public:
+	Trainer(const std::string& name) : name_(name) {}
+	void TrainDog(const std::shared_ptr<Dog>& dog) {
+		dog_ = dog; // Store a shared_ptr to the dog
+	}
+	void CommandDog() const {
+		if (auto dog = dog_.lock()) { // Try to get a shared_ptr from weak_ptr
+			dog->Bark(); // Command the dog to bark
+		} else {
+			std::cout << "The dog is no longer available for training." << std::endl;
+		}
+	}
+private:
+	std::weak_ptr<Dog> dog_; // Weak pointer to the dog
+	std::string name_;
+};
+
+int main() {
+	// Create a shared_ptr for a dog
+	std::shared_ptr<Dog> dog = std::make_shared<Dog>("Rex");
+
+	// Create a Trainer and train the dog
+	Trainer trainer("John");
+	trainer.TrainDog(dog);
+
+	// Command the dog to bark
+	trainer.CommandDog(); // Output: Rex says woof!
+
+	// Reset the original shared_ptr
+	dog.reset();
+
+	// Try to command the dog again
+	trainer.CommandDog(); // Output: The dog is no longer available for training.
+
+	return 0;
+}
+
+
+shared_ptr: Manages the Dog object’s lifetime and ensures it stays alive as long as at least one shared_ptr references it.
+weak_ptr: Used by Trainer to observe the Dog without affecting its reference count or ownership. It allows the Trainer to check if the Dog still exists.
+Object Lifetime: The Dog is destroyed when the last shared_ptr is reset or goes out of scope, which is why after resetting dog, the Trainer cannot access it anymore.
+*/

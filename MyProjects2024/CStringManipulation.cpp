@@ -10,26 +10,36 @@
 // # 4 {[()()]}
 // # 5  a a b c d d find the count
 
-void validateBrackets_(const std::string& str)
+void validateBrackets_(const std::string& sSTR)
 {
 	std::cout << "\tFunction name" << __FUNCTION__ << std::endl ;
-	std::vector<char>brackets;
-	for (auto& tmp : str)
+	std::vector<char> brackets;
+	for (auto& tmp : sSTR)
 	{
-		if ((tmp == '{') || (tmp == '[') || (tmp == '('))
+		if (tmp == '(' || tmp == '{' || tmp == '[')
 		{
 			brackets.push_back(tmp);
 		}
-		else if(((tmp == '}') && (brackets.back() == '{')) 
-			|| ((tmp == ']') && (brackets.back() == '['))
-			|| ((tmp == ')') && (brackets.back() == '(')))
+		else if ((!brackets.empty() && tmp == ')' && brackets.back() == '(')
+			|| (!brackets.empty() && tmp == '}' && brackets.back() == '{')
+			|| (!brackets.empty() && tmp == ']' && brackets.back() == '['))
 		{
 			brackets.pop_back();
 		}
+		else
+		{
+			std::cout << "invalid brackets" << std::endl;
+			return;  // Exit immediately if invalid
+		}
 	}
-	if (brackets.empty())
+
+	if (!brackets.empty())
 	{
-		std::cout << "\t brackets are valid" << std::endl;
+		std::cout << "invalid brackets" << std::endl;
+	}
+	else
+	{
+		std::cout << "valid brackets" << std::endl;
 	}
 }
 
