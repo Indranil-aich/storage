@@ -137,7 +137,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CABSFactoryDP.cpp" />
+    <ClCompile Include="CabsFactoryDP.cpp" />
+    <ClCompile Include="CarrayOperation.cpp" />
     <ClCompile Include="CBitManipulation.cpp" />
     <ClCompile Include="CCreateFuncPTRNFunctor_.cpp" />
     <ClCompile Include="CExplicitConstructor.cpp" />
@@ -150,7 +151,6 @@
     <ClCompile Include="CSharedPTR.cpp" />
     <ClCompile Include="CSingleton.cpp" />
     <ClCompile Include="CSingletonDC.cpp" />
-    <ClCompile Include="C2D_N_3D_Array.cpp" />
     <ClCompile Include="CStringManipulation.cpp" />
     <ClCompile Include="CUniquePTR.cpp" />
     <ClCompile Include="CVisitorDP.cpp" />
