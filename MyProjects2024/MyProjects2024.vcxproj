@@ -159,6 +159,7 @@
     <ClCompile Include="CdeleteSpatialMemberFunction.cpp" />
     <ClCompile Include="CdiamonProblem.cpp" />
     <ClCompile Include="CLinkList.cpp" />
+    <ClCompile Include="CobserverDP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssociationVsAggregationVsComposition.h" />

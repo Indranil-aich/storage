@@ -13,33 +13,34 @@
 void validateBrackets_(const std::string& sSTR)
 {
 	std::cout << "\tFunction name" << __FUNCTION__ << std::endl ;
-	std::vector<char> brackets;
+	std::vector<char> tokens;
 	for (auto& tmp : sSTR)
 	{
-		if (tmp == '(' || tmp == '{' || tmp == '[')
+		if ((tmp == '(') || (tmp == '{') || (tmp == '['))
 		{
-			brackets.push_back(tmp);
+			tokens.push_back(tmp);
 		}
-		else if ((!brackets.empty() && tmp == ')' && brackets.back() == '(')
-			|| (!brackets.empty() && tmp == '}' && brackets.back() == '{')
-			|| (!brackets.empty() && tmp == ']' && brackets.back() == '['))
+		else if ((tmp == ')' && !tokens.empty() && tokens.back() == '(') ||
+			(tmp == '}' && !tokens.empty() && tokens.back() == '{') ||
+			(tmp == ']' && !tokens.empty() && tokens.back() == '['))
 		{
-			brackets.pop_back();
+			tokens.pop_back();
 		}
-		else
+		else if ((tmp == ')') || (tmp == '}') || (tmp == ']'))
 		{
+			// If there's a closing bracket without a matching opening bracket
 			std::cout << "invalid brackets" << std::endl;
-			return;  // Exit immediately if invalid
+			return;
 		}
 	}
 
-	if (!brackets.empty())
+	if (tokens.empty())
 	{
-		std::cout << "invalid brackets" << std::endl;
+		std::cout << "valid brackets" << std::endl;
 	}
 	else
 	{
-		std::cout << "valid brackets" << std::endl;
+		std::cout << "invalid brackets" << std::endl;
 	}
 }
 
@@ -132,49 +133,3 @@ void funcToManipulateString_()
 	validateBrackets_("{ [()()] }");*/
 	findDomainName_("aich@gmail.com  aich@calsoft.com aich@niva.com iaich@gmail.com");
 }
-
-/*#include <iostream>
-#include <unordered_map>
-#include <vector>
-#include <string>
-#include <sstream>
-
-void validateBrackets(const std::string &sSTR)
-{
-    std::vector<char> tokens;
-    for(auto &tmp : sSTR)
-    {
-        if((tmp == '(') || (tmp == '{') || (tmp == '['))
-        {
-            tokens.push_back(tmp);
-        }
-        else if((tmp == ')' && !tokens.empty() && tokens.back() == '(') || 
-                (tmp == '}' && !tokens.empty() && tokens.back() == '{') || 
-                (tmp == ']' && !tokens.empty() && tokens.back() == '['))
-        {
-            tokens.pop_back();
-        }
-        else if((tmp == ')') || (tmp == '}') || (tmp == ']'))
-        {
-            // If there's a closing bracket without a matching opening bracket
-            std::cout << "invalid brackets" << std::endl;
-            return;
-        }
-    } 
-
-    if(tokens.empty()) 
-    {
-       std::cout << "valid brackets" << std::endl;
-    }
-    else
-    {
-       std::cout << "invalid brackets" << std::endl;
-    } 
-}
-
-int main()
-{
-    validateBrackets("{[()()]}");
-    return 0;
-}
-*/

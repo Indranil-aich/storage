@@ -29,11 +29,13 @@ int main()
 	funcToManipulateString_();
 	funcToCreateABSFactory_();
 	funcToCreateVisitor_();
+    funcToCreateBST_();
 
 */
 
  
- funcToCreateBST_();
+ 
+  funcToCreateObserverDP_();
 	
 	return 0;
 }

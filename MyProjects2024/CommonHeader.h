@@ -19,3 +19,4 @@ extern void funcToManipulateString_();
 extern void funcToCreateABSFactory_();
 extern void funcToCreateVisitor_();
 extern void funcToCreateBST_();
+extern void funcToCreateObserverDP_();
