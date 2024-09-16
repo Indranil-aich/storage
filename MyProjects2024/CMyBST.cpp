@@ -232,3 +232,245 @@ void funcToCreateBST_()
     //return 0;
 }
 
+/*
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <queue>
+
+// #1 createBST
+// #2 InOrderR
+// #3 InOrderI
+// #4 preOrderR
+// #5 postOrderR
+// #6 findMin
+// #7 mirrorTree
+// #8 mirrorTree
+// #9 BST2DLL
+
+
+
+class CmyBST
+{
+private:
+    int _mdata;
+    CmyBST* left_node;
+    CmyBST* right_node;
+public:
+    CmyBST(int data)
+        :_mdata(data)
+        , left_node(nullptr)
+        , right_node(nullptr) {}
+    CmyBST* createBST_(CmyBST* rootBST, int info);
+    void inOrderR_(CmyBST* rootBST);
+    void inOrderI_(CmyBST* rootBST, CmyBST** head );
+    void inOrderI_(CmyBST* rootBST);
+    void preOrderR_(CmyBST* rootBST);
+    void postOrderR_(CmyBST* rootBST);
+    CmyBST* covertToMirror(CmyBST* rootBST);
+    void leftView(CmyBST* rootBST);
+    CmyBST* BST2DLL_(CmyBST* rootBST);
+    void findMin_(CmyBST* rootBST)
+    {
+        int min1 , min2;
+        while(rootBST->left_node)
+        {
+            min2 = rootBST->_mdata;
+            rootBST = rootBST->left_node;
+            min1 = rootBST->_mdata;
+            if(rootBST->left_node == nullptr && rootBST->right_node != nullptr)
+            {
+                 min2 = rootBST->right_node->_mdata;
+            }
+        }
+        std::cout<<"min1:: "<<min1<<" min2:: "<<min2<<std::endl;
+    }
+    void displayDLL(CmyBST* headDLL)
+    {
+       while(headDLL != nullptr)
+       {
+           std::cout<<" "<<headDLL->_mdata;
+           headDLL = headDLL->right_node;
+       }
+    }
+
+};
+
+CmyBST* CmyBST::covertToMirror(CmyBST* bstRoot)
+{
+    if(bstRoot != nullptr)
+    {
+        CmyBST* tmp = bstRoot->left_node;
+        bstRoot->left_node = bstRoot->right_node;
+        bstRoot->right_node = tmp;
+        covertToMirror(bstRoot->left_node);
+        covertToMirror(bstRoot->right_node);
+    }
+    return bstRoot;
+}
+
+CmyBST* CmyBST::createBST_(CmyBST* rootBST, int data)
+{
+    if( rootBST == nullptr)
+    {
+       rootBST = new CmyBST(data);
+    }else if(data < rootBST->_mdata)
+    {
+       rootBST->left_node = createBST_(rootBST->left_node, data);
+    }else if( data > rootBST->_mdata)
+    {
+        rootBST->right_node = createBST_(rootBST->right_node, data);
+    }
+    return rootBST;
+}
+
+void CmyBST::inOrderI_(CmyBST* rootBST)
+{
+   CmyBST* curr = rootBST;
+   std::stack<CmyBST*> _mStack;
+   while(curr != nullptr || !_mStack.empty())
+   {
+        while(curr != nullptr)
+        {
+          _mStack.push(curr);
+          curr = curr->left_node;
+        }
+        curr= _mStack.top();
+        _mStack.pop();
+        std::cout<<" "<<curr->_mdata;
+       curr = curr->right_node;
+   }
+
+}
+void CmyBST::inOrderR_(CmyBST* rootBST)
+{
+     if(rootBST != nullptr)
+    {
+        inOrderR_(rootBST->left_node);
+           std::cout<<" "<<rootBST->_mdata;
+        inOrderR_(rootBST->right_node);
+    }
+}
+
+CmyBST* CmyBST::BST2DLL_(CmyBST* rootBST)
+{
+   CmyBST* curr = rootBST;
+   CmyBST* head = nullptr;
+   CmyBST* pre = nullptr;
+   std::stack<CmyBST*> _mStack;
+   while(curr != nullptr || !_mStack.empty())
+   {
+        while(curr != nullptr)
+        {
+          _mStack.push(curr);
+           curr = curr->left_node;
+        }
+        curr= _mStack.top();
+        _mStack.pop();
+        if(head == nullptr)
+        {
+            head = curr;
+        }else{
+            pre->right_node = curr;
+            curr->left_node = pre;
+        }
+        pre = curr;
+       //td::cout<<" "<<curr->_mdata;
+       curr = curr->right_node;
+   }
+   return head;
+}
+
+
+
+void CmyBST::preOrderR_(CmyBST* rootBST)
+{
+    if(rootBST != nullptr)
+    {
+        std::cout<<" "<<rootBST->_mdata;
+        preOrderR_(rootBST->left_node);
+
+        preOrderR_(rootBST->right_node);
+    }
+}
+
+
+void CmyBST::postOrderR_(CmyBST* rootBST)
+{
+    if(rootBST != nullptr)
+    {
+
+        postOrderR_(rootBST->left_node);
+
+        postOrderR_(rootBST->right_node);
+        std::cout<<" "<<rootBST->_mdata;
+    }
+
+}
+#include <list>
+void CmyBST::leftView(CmyBST* rootBST)
+{
+  CmyBST* curr = rootBST;
+  std::queue<CmyBST*> _mQueue;
+  _mQueue.push(curr);
+  while(!_mQueue.empty())
+  {
+    size_t size = _mQueue.size();
+    for(int i = 1; i <= size;  i++)
+    {
+       curr = _mQueue.front();
+       _mQueue.pop();
+       if( i ==  1)
+       {
+          std::cout<<" "<<curr->_mdata;
+       }
+       if(curr->left_node != nullptr)
+       {
+         _mQueue.push(curr->left_node);
+       }
+       if(curr->right_node != nullptr)
+       {
+         _mQueue.push(curr->right_node);
+       }
+    }
+  }
+}
+
+
+int main()
+{
+    CmyBST* bstRoot = new CmyBST(60);
+    CmyBST* head = nullptr;
+    bstRoot->createBST_(bstRoot, 50);
+    bstRoot->createBST_(bstRoot, 70);
+    bstRoot->createBST_(bstRoot, 45);
+    bstRoot->createBST_(bstRoot, 55);
+    bstRoot->createBST_(bstRoot, 65);
+    bstRoot->createBST_(bstRoot, 75);
+    bstRoot->createBST_(bstRoot, 73);
+    bstRoot->findMin_(bstRoot);
+    std::cout << "=== inOrderI=====\n";
+    bstRoot->inOrderI_(bstRoot);
+    //bstRoot = bstRoot->covertToMirror(bstRoot);
+    std::cout << "\n=== inOrderR=====\n";
+    bstRoot->inOrderR_(bstRoot);
+    std::cout << "\n=== preOrderR=====\n";
+    bstRoot->preOrderR_(bstRoot);
+    std::cout << "\n=== postOrderR=====\n";
+    bstRoot->postOrderR_(bstRoot);
+    std::cout << "\n=== left view=====\n";
+    bstRoot->leftView(bstRoot);
+    bstRoot = bstRoot->covertToMirror(bstRoot);
+    std::cout << "\n=== Convert to inOrderR=====\n";
+    bstRoot->inOrderR_(bstRoot);
+    head= bstRoot->BST2DLL_(bstRoot);
+    std::cout << "\n DLL\n";
+    head->displayDLL(head);
+    //bstRoot->inOrderI_(bstRoot, &head);
+
+    //bstRoot->displayDLL(head);*/
+return 0;
+}
+
+
+*/

@@ -97,24 +97,15 @@ public:
 	}
 	~CmyLink()
 	{
-		if (_mNN != nullptr)
-		{
-			std::cout << " " << _mData;
-			CmyLink* tmp = _mNN;
-
-			_mNN = tmp->_mNN;
-			delete tmp;
-			tmp = nullptr;
-		}
-		/*
-		*CmyLink* current = _mNN;
+		
+		CmyLink* current = _mNN;
         while (current != nullptr)
         {
             CmyLink* next = current->_mNN;
             delete current;
             current = next;
         }
-		*/
+		
 	}
 	CmyLink* reverseMyLink_(CmyLink* nodeObj)
 	{

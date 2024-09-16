@@ -18,7 +18,7 @@ The Car class may have a collection of Wheel objects as a member variable, and i
 Composition:
 ===========================
 
-Composition is a strong form of aggregation where one object owns or is responsible for the existence and lifecycle of another object.
+Composition is a strong form of aggregation where one object is responsible for the existence and lifecycle of another object.
 For example, a Car class may have a relationship with an Engine class through composition. The engine is an essential component of
 the car, and it cannot exist without the car.
 The Car class owns an Engine object, and the engine is created, modified, and destroyed along with the car.

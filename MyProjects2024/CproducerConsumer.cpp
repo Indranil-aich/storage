@@ -192,3 +192,187 @@ int main()
 
 
 */
+
+/*
+#include <iostream>
+#include <semaphore.h>
+#include <thread>
+#include <memory>
+
+#define SIZE 5
+
+int _iTail = 0;
+int _iHead = 0;
+int _iBuf[SIZE];
+bool bFull = false;
+bool bEmpty = true;
+sem_t sem_co, sem_pr;
+
+// Custom deleter for the semaphores
+void semaphore_deleter(sem_t* sem) {
+    sem_post(sem);  // Release the semaphore
+}
+
+void producer() {
+    for (int i = 1; i <= SIZE * 2; i++) {
+        // Use std::unique_ptr to manage the semaphore for producer
+        std::unique_ptr<sem_t, decltype(&semaphore_deleter)> guard(&sem_co, semaphore_deleter);
+        sem_wait(&sem_pr);
+
+        _iBuf[_iTail] = i * 10;
+        std::cout << "produce " << _iBuf[_iTail] << "\n";
+        _iTail = (_iTail + 1) % SIZE;
+
+        if (_iTail == _iHead) {
+            bFull = true;
+        }
+        bEmpty = false;
+
+      //  sem_post(&sem_co);
+    }
+}
+
+void consumer() {
+    for (int i = 1; i <= SIZE * 2; i++) {
+        // Use std::unique_ptr to manage the semaphore for consumer
+        std::unique_ptr<sem_t, decltype(&semaphore_deleter)> guard(&sem_pr, semaphore_deleter);
+        sem_wait(&sem_co);
+
+        std::cout << "consume " << _iBuf[_iHead] << "\n";
+        _iHead = (_iHead + 1) % SIZE;
+
+        if (_iHead == _iTail) {
+            bEmpty = true;
+        }
+        bFull = false;
+
+       // sem_post(&sem_pr);
+    }
+}
+
+int main() {
+    sem_init(&sem_pr, 0, 1);
+    sem_init(&sem_co, 0, 0);
+
+    std::thread th1(producer);
+    std::thread th2(consumer);
+
+    th1.join();
+    th2.join();
+
+    sem_destroy(&sem_pr);
+    sem_destroy(&sem_co);
+
+    return 0;
+}
+
+*/
+
+/*
+#include <iostream>
+#include <semaphore.h>
+#include <mutex>
+#include <memory>
+#include <thread>
+#include <vector>
+#include <condition_variable>
+sem_t sem_ev, sem_od;
+
+void sempost(sem_t *sem)
+{
+    sem_post(sem);
+}
+void even(std::vector<int> v1)
+{
+  for(auto &tmp:v1)
+  {
+    std::unique_ptr<sem_t, decltype(&sempost)>guard(&sem_od, sempost);
+    sem_wait(&sem_ev);
+     if(tmp % 2 == 0)
+     {
+
+        std::cout<<" "<<tmp;
+
+     }
+    //sem_post(&sem_od);
+  }
+}
+void odd(std::vector<int> v1)
+{
+  for(auto &tmp:v1)
+  {
+    std::unique_ptr<sem_t, decltype(&sempost)>guard(&sem_ev, sempost);
+    sem_wait(&sem_od);
+     if(tmp % 2 != 0)
+     {
+
+        std::cout<<" "<<tmp;
+
+     }
+   // sem_post(&sem_ev);
+  }
+}
+int main()
+{
+   std::vector<int>v1{1,2,3,4,5,6,7,8,9,10};
+   sem_init(&sem_ev, 0, 0);
+   sem_init(&sem_od, 0, 1);
+   std::thread th1(odd, v1);
+   std::thread th2(even, v1);
+   th1.join();
+   th2.join();
+   return 0;
+}
+*/
+
+/*
+#include <iostream>
+#include <mutex>
+#include <thread>
+#include <vector>
+#include <condition_variable>
+
+std::mutex mtx;
+std::condition_variable sem_ev; // Condition variable for even numbers
+std::condition_variable sem_od; // Condition variable for odd numbers
+int current = 1; // Shared state to track the current number to print
+
+void print_even(const std::vector<int>& v1) {
+    for (auto num : v1) {
+        std::unique_lock<std::mutex> lock(mtx);
+        sem_ev.wait(lock, [&]() { return num == current; });
+
+        if (num % 2 == 0) {
+            std::cout << " " << num;
+            current++; // Move to the next number
+            sem_od.notify_one(); // Notify the odd thread to continue
+        }
+    }
+}
+
+void print_odd(const std::vector<int>& v1) {
+    for (auto num : v1) {
+        std::unique_lock<std::mutex> lock(mtx);
+        sem_od.wait(lock, [&]() { return num == current; });
+
+        if (num % 2 != 0) {
+            std::cout << " " << num;
+            current++; // Move to the next number
+            sem_ev.notify_one(); // Notify the even thread to continue
+        }
+    }
+}
+
+int main() {
+    std::vector<int> v1{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    std::thread th1(print_odd, std::cref(v1));
+    std::thread th2(print_even, std::cref(v1));
+
+    th1.join();
+    th2.join();
+
+    return 0;
+}
+
+*/

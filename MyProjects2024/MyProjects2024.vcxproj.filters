@@ -57,9 +57,6 @@
     <ClCompile Include="CSingletonDC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C2D_N_3D_Array.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CBitManipulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -79,6 +76,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CproducerConsumer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarrayOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CobserverDP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CWeakPTR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
